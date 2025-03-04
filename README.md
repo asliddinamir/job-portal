@@ -29,7 +29,7 @@ Jobify is a modern online job portal that connects job seekers with employers. I
 - **Frontend:** HTML, CSS, JavaScript  
 - **Backend:** PHP  
 - **Database:** MySQL  
-- **Tools:** XAMPP (or WAMP), PHPMyAdmin  
+- **Tools:** XAMPP, PHPMyAdmin  
 
 ---
 

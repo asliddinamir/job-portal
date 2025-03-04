@@ -9,7 +9,9 @@
 <body>
     <header>
         <div class="logo">
-            <h1>Jobify</h1>
+            <h1>
+                <a href="#">Jobify</a>
+            </h1>
         </div>
         <nav>
             <ul>

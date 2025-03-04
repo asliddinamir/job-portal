@@ -1,4 +1,6 @@
+/* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,17 +10,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Full height to ensure footer stays at the bottom */
 html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Smooth Gradient */
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
 }
 
-/* Wrapper to push footer down */
+/* Wrapper for content */
 .wrapper {
-    flex: 1; /* Pushes footer to bottom */
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,14 +34,21 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
-    background: #142850; /* Distinct header color */
+    background: #142850;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
-.logo h1 {
+.logo h1 a {
     font-size: 28px;
     font-weight: bold;
-    color: #ffcc00; /* Golden yellow */
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.logo h1 a:hover {
+    letter-spacing: 1.2px;
+    transition: 0.3s ease-in-out;
 }
 
 /* Navigation */
@@ -65,31 +75,48 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* ======= HERO SECTION ======= */
+/* ======= HERO SECTION (100% Width & Darker) ======= */
 .hero {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 70vh;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 15px;
-    width: 80%;
-    margin: 40px auto;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    height: 85vh;
+    width: 100%;
+    background: url("../images/bg-photo3.png") no-repeat center center/cover;
+    color: white;
+}
+
+/* Dark overlay for better text contrast */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+}
+
+/* Hero content */
+.hero h2, .hero p, .btn {
+    position: relative;
+    z-index: 1; /* Ensures text is above the dark overlay */
 }
 
 .hero h2 {
     font-size: 40px;
     margin-bottom: 10px;
     font-weight: 600;
+    text-align: center;
 }
 
 .hero p {
     font-size: 18px;
     margin-bottom: 20px;
     opacity: 0.9;
+    text-align: center;
 }
 
 /* Button */
@@ -120,5 +147,5 @@ footer {
     color: white;
     font-size: 14px;
     width: 100%;
-    margin-top: auto; /* Ensures footer stays at the bottom */
+    margin-top: auto;
 }

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Smooth Gradient */
+    color: white;
+}
+
+/* Wrapper to push footer down */
+.wrapper {
+    flex: 1; /* Pushes footer to bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ======= HEADER ======= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: #142850; /* Distinct header color */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffcc00; /* Golden yellow */
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    background: #ffcc00;
+    color: black;
+    border-radius: 5px;
+}
+
+/* ======= HERO SECTION ======= */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    margin: 40px auto;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    background: #ffcc00;
+    color: black;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: 0.3s;
+    font-size: 18px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ======= FOOTER (Fixed at Bottom) ======= */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #142850;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    margin-top: auto; /* Ensures footer stays at the bottom */
+}

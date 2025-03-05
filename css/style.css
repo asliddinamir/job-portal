@@ -18,6 +18,9 @@ html, body {
     background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
 }
+p{
+    font-family: inherit;
+}
 
 /* Wrapper for content */
 .wrapper {
@@ -164,6 +167,7 @@ footer {
 }
 
 .job-card {
+    cursor: pointer;
     background: white;
     color: black;
     padding: 20px;

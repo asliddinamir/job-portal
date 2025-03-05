@@ -80,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply for <?= htmlspecialchars($job['job_title']) ?> | Jobify</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- FontAwesome Icons -->
 </head>
 <body>
     <header>
@@ -107,20 +108,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
 
         <form method="POST" enctype="multipart/form-data" class="apply-form">
-            <label for="name">Full Name:</label>
-            <input type="text" name="name" required>
+            <div class="apply-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" required>
+            <div class="apply-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
 
-            <label for="phone">Phone:</label>
-            <input type="tel" name="phone" required>
+            <div class="apply-group">
+                <i class="fas fa-phone"></i>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+            </div>
 
-            <label for="resume">Resume:</label>
-            <input type="file" name="resume" required accept=".pdf, .doc, .docx">
+            <div class="apply-group">
+                <i class="fas fa-file-alt"></i>
+                <input type="file" name="resume" placeholder="Resume" required accept=".pdf, .doc, .docx">
+            </div>
 
-            <label for="cover_letter">Cover Letter:</label>
-            <textarea name="cover_letter" rows="5" required style="resize: none;"></textarea>
+            <div class="apply-group">
+                <i class="fas fa-file-alt"></i>
+                <textarea name="cover_letter" placeholder="Cover Letter" rows="5" required style="resize: none;"></textarea>
+            </div>
 
             <button type="submit">Submit Application</button>
         </form>

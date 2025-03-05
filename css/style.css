@@ -58,10 +58,12 @@ header {
 nav ul {
     list-style: none;
     display: flex;
+    background: red;
 }
 
 nav ul li {
     margin: 0 15px;
+    background: red;
 }
 
 nav ul li a {
@@ -70,12 +72,19 @@ nav ul li a {
     font-weight: 500;
     transition: 0.3s ease-in-out;
     padding: 5px 10px;
+    background:#ffcc00;
 }
 
 nav ul li a:hover {
     background: #ffcc00;
     color: black;
-    border-radius: 5px;
+    border-radius: 2px;
+}
+
+/* Active Link */
+.active {
+    background: #ffcc00;
+    color: black;
 }
 
 /* ======= HERO SECTION (100% Width & Darker) ======= */
@@ -153,7 +162,7 @@ footer {
     margin-top: auto;
 }
 
-/* Job Listings */
+/* Job Listings Section */
 .job-listings {
     padding: 40px;
     text-align: center;
@@ -161,19 +170,19 @@ footer {
 
 .job-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
     margin-top: 20px;
 }
 
 .job-card {
-    cursor: pointer;
     background: white;
     color: black;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
+    text-align: left;
 }
 
 .job-card:hover {
@@ -182,14 +191,32 @@ footer {
 }
 
 .job-card h3 {
-    margin: 0;
-    font-size: 22px;
+    font-size: 20px;
     color: #1e3c72;
+    margin-bottom: 5px;
 }
 
 .job-card p {
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px 0;
+    color: #444;
+}
+
+.job-card .btn {
+    display: inline-block;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    background: #ffcc00;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.job-card .btn:hover {
+    background: #e6b800;
+    transform: scale(1.05);
 }
 
 .search-form {

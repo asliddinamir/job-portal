@@ -1,11 +1,18 @@
 <?php
-// Database connection
 include 'php/config.php';
 
-// Fetch jobs from the database
-$query = "SELECT * FROM jobs";
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
+// Search functionality
+$query = "SELECT * FROM jobs WHERE 
+          job_title LIKE '%$search%' 
+          OR company_name LIKE '%$search%' 
+          OR location LIKE '%$search%'
+          ORDER BY date_posted DESC";
+
 $result = $conn->query($query);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +30,7 @@ $result = $conn->query($query);
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="job-listings.php">Jobs</a></li>
+                <li><a href="job-listings.php" class="active">Jobs</a></li>
                 <li><a href="register.php">Register</a></li>
                 <li><a href="login.php">Login</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
@@ -31,14 +38,16 @@ $result = $conn->query($query);
         </nav>
     </header>
 
+
     <main class="job-listings">
         <h2>Available Jobs</h2>
 
         <!-- Search Bar -->
         <form method="GET" class="search-form">
-            <input type="text" name="search" placeholder="Search for jobs..." required>
+            <input type="text" name="search" placeholder="Search for jobs..." value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>">
             <button type="submit">Search</button>
         </form>
+
 
         <!-- Job Listings -->
         <div class="job-container">

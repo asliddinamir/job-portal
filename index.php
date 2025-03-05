@@ -9,13 +9,11 @@
 <body>
     <header>
         <div class="logo">
-            <h1>
-                <a href="#">Jobify</a>
-            </h1>
+            <h1><a href="index.php">Jobify</a></h1>
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="job-listings.php">Jobs</a></li>
                 <li><a href="register.php">Register</a></li>
                 <li><a href="login.php">Login</a></li>
@@ -23,6 +21,7 @@
             </ul>
         </nav>
     </header>
+
 
     <main>
         <section class="hero">

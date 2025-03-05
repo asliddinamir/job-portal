@@ -24,10 +24,19 @@
 
     <main>
         <section class="hero">
-            <h2>Your Dream Job is One Click Away</h2>
-            <p>Explore thousands of jobs and kickstart your career with Jobify.</p>
-            <a href="job-listings.php" class="btn">Browse Jobs</a>
+            <div class="hero-content">
+                <h1>Find Your Perfect Job with Jobify</h1>
+                <p>Jobify connects job seekers with top companies, making job hunting effortless.  
+                Browse thousands of opportunities across different industries and take the next step in your career.</p>
+                <ul class="benefits-list">
+                    <li>✔ Explore jobs from trusted companies</li>
+                    <li>✔ Easy application process</li>
+                    <li>✔ Personalized job recommendations</li>
+                </ul>
+                <a href="job-listings.php" class="btn">Browse Jobs</a>
+            </div>
         </section>
+
     </main>
 
     <footer>

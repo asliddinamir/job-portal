@@ -93,15 +93,16 @@ nav ul li a.active {
 
 /* ======= HERO SECTION (100% Width & Darker) ======= */
 .hero {
-    position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     height: 86vh;
-    width: 100%;
     background: url("../assets/images/bg-photo3.png") no-repeat center center/cover;
     color: white;
+    padding: 20px;
+    width: 100%;
+    position: relative;
 }
 
 /* Dark overlay for better text contrast */
@@ -112,27 +113,40 @@ nav ul li a.active {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    background: rgba(0, 0, 0, 0.8); /* Darker overlay */
+}
+
+.hero-content {
+    max-width: 600px;
 }
 
 /* Hero content */
-.hero h2, .hero p, .btn {
+.hero h1, .hero p, .hero ul li, .btn {
     position: relative;
-    z-index: 1; /* Ensures text is above the dark overlay */
+    z-index: 1;
 }
 
-.hero h2 {
-    font-size: 40px;
+.hero h1 {
+    font-size: 36px;
     margin-bottom: 10px;
-    font-weight: 600;
-    text-align: center;
+    font-weight: bold;
 }
 
 .hero p {
     font-size: 18px;
     margin-bottom: 20px;
-    opacity: 0.9;
-    text-align: center;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.benefits-list li {
+    margin: 8px 0;
+    color: #ffcc00;
 }
 
 /* Button */

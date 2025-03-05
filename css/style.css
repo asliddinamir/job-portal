@@ -15,11 +15,15 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: white;
+    background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
+    color: #222;
 }
-p{
+p {
     font-family: inherit;
+}
+
+h3{
+    color: #1e3c72;
 }
 
 /* Wrapper for content */
@@ -58,12 +62,10 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    background: red;
 }
 
 nav ul li {
     margin: 0 15px;
-    background: red;
 }
 
 nav ul li a {
@@ -72,7 +74,7 @@ nav ul li a {
     font-weight: 500;
     transition: 0.3s ease-in-out;
     padding: 5px 10px;
-    background:#ffcc00;
+    cursor: pointer;
 }
 
 nav ul li a:hover {
@@ -82,9 +84,10 @@ nav ul li a:hover {
 }
 
 /* Active Link */
-.active {
+nav ul li a.active {
     background: #ffcc00;
     color: black;
+    border-radius: 2px;
 }
 
 /* ======= HERO SECTION (100% Width & Darker) ======= */
@@ -94,7 +97,7 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 85vh;
+    height: 86vh;
     width: 100%;
     background: url("../images/bg-photo3.png") no-repeat center center/cover;
     color: white;
@@ -183,6 +186,7 @@ footer {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: 0.3s ease-in-out;
     text-align: left;
+    cursor: pointer;
 }
 
 .job-card:hover {
@@ -229,17 +233,25 @@ footer {
 .search-form input {
     padding: 10px;
     width: 70%;
-    border: none;
-    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border:none; 
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     font-size: 16px;
+}
+
+.search-form input:focus {
+    outline: none;
 }
 
 .search-form button {
     padding: 10px;
     background: #ffcc00;
     border: none;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     font-size: 16px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     cursor: pointer;
 }
 

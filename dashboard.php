@@ -1,14 +1,20 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'job_seeker') {
+    header("Location: login.php");
+    exit();
+}
+
 // Include database connection
 include 'php/config.php';
 
 $message = "";
 
-// Simulating logged-in user (Replace this with session authentication later)
-$user_email = "asa@gmail.com"; // Replace with dynamic session data
+// Get the logged-in user's email from session
+$user_email = $_SESSION['email']; // Now using session data
 
 // Fetch applications for the logged-in user
-$query = "SELECT applications.*, jobs.job_title, jobs.company_name, jobs.location 
+$query = "SELECT applications.*, jobs.job_title, jobs.company_name, jobs.location, applications.status, applications.applied_at
           FROM applications 
           INNER JOIN jobs ON applications.job_id = jobs.id 
           WHERE applications.email = ? 

@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<?php
 // Include database connection
 include 'php/config.php';
 
@@ -44,7 +52,6 @@ $result = $conn->query($query);
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
                 <li><a href="admin-dashboard.php" class="active">Admin Panel</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>

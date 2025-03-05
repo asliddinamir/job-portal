@@ -527,7 +527,8 @@ footer {
     text-align: center;
 }
 
-.dashboard-container h2 {
+
+.dashboard-container h2, #manage-jobs h2 {
     font-size: 26px;
     color: #1e3c72;
     margin-bottom: 15px;
@@ -959,4 +960,55 @@ footer {
 
 .reset-form button {
     width: 50%;
+}
+
+/* Manage Jobs Dashboard */
+#manage-jobs {
+    width: 95%;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    text-align: center;
+}
+
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.job-table th, .job-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.job-table th {
+    background-color: #142850;
+    color: white;
+}
+
+/* Action Buttons */
+.btn2 {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-edit {
+    background-color: #ffcc00;
+    color: black;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
 }

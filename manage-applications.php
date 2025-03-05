@@ -56,7 +56,8 @@ $result = $conn->query($query);
         </div>
         <nav>
             <ul>
-                <li><a href="admin-dashboard.php" class="active">Admin Panel</a></li>
+                <li><a href="manage-jobs.php">Manage Jobs</a></li>
+                <li><a href="manage-applications.php" class="active">Manage Applications</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

@@ -143,5 +143,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
+    <script src='js/script.js'></script>
 </body>
 </html>

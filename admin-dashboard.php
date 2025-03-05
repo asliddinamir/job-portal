@@ -4,9 +4,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit();
 }
-?>
 
-<?php
 // Include database connection
 include 'php/config.php';
 
@@ -15,7 +13,7 @@ $message = "";
 // Handle application status update
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['application_id']) && isset($_POST['status'])) {
     $application_id = intval($_POST['application_id']);
-    $new_status = in_array($_POST['status'], ['Shortlisted', 'Rejected']) ? $_POST['status'] : 'Pending';
+    $new_status = in_array($_POST['status'], ['Shortlisted', 'Rejected', 'Pending']) ? $_POST['status'] : 'Pending';
 
     $updateQuery = "UPDATE applications SET status = ? WHERE id = ?";
     $stmt = $conn->prepare($updateQuery);
@@ -28,12 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['application_id']) && i
     }
 }
 
-// Fetch all applications
+// Fetch applications with optional filtering
+$status_filter = isset($_GET['status']) ? $_GET['status'] : '';
+
 $query = "SELECT applications.*, jobs.job_title, jobs.company_name, jobs.location 
           FROM applications 
-          INNER JOIN jobs ON applications.job_id = jobs.id 
-          ORDER BY applications.applied_at DESC";
+          INNER JOIN jobs ON applications.job_id = jobs.id";
 
+if (!empty($status_filter)) {
+    $query .= " WHERE applications.status = '$status_filter'";
+}
+
+$query .= " ORDER BY applications.applied_at DESC";
 $result = $conn->query($query);
 ?>
 
@@ -47,8 +51,8 @@ $result = $conn->query($query);
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>Jobify</h1>
+        <div class="admin-logo">
+            <h1>Jobify Admin Panel</h1>
         </div>
         <nav>
             <ul>
@@ -65,6 +69,17 @@ $result = $conn->query($query);
             <p class="message"><?= $message ?></p>
         <?php endif; ?>
 
+        <!-- Filter by Status -->
+        <form method="GET" class="filter-form">
+            <label for="status">Filter by Status:</label>
+            <select name="status" onchange="this.form.submit()">
+                <option value="">All</option>
+                <option value="Pending" <?= ($status_filter == 'Pending') ? 'selected' : '' ?>>Pending</option>
+                <option value="Shortlisted" <?= ($status_filter == 'Shortlisted') ? 'selected' : '' ?>>Shortlisted</option>
+                <option value="Rejected" <?= ($status_filter == 'Rejected') ? 'selected' : '' ?>>Rejected</option>
+            </select>
+        </form>
+
         <?php if ($result->num_rows > 0): ?>
             <table class="admin-table">
                 <thead>
@@ -72,6 +87,9 @@ $result = $conn->query($query);
                         <th>Job Title</th>
                         <th>Applicant</th>
                         <th>Email</th>
+                        <th>Phone</th>
+                        <th>Resume</th>
+                        <th>Cover Letter</th>
                         <th>Status</th>
                         <th>Applied On</th>
                         <th>Action</th>
@@ -83,6 +101,21 @@ $result = $conn->query($query);
                             <td><?= htmlspecialchars($row['job_title']) ?></td>
                             <td><?= htmlspecialchars($row['job_seeker_name']) ?></td>
                             <td><?= htmlspecialchars($row['email']) ?></td>
+                            <td><?= htmlspecialchars($row['phone']) ?></td>
+                            <td>
+                                <?php if (!empty($row['resume'])): ?>
+                                    <a href="<?= htmlspecialchars($row['resume']) ?>" target="_blank" class="btn-view">View Resume</a>
+                                <?php else: ?>
+                                    No Resume
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if (!empty($row['cover_letter'])): ?>
+                                    <a href="cover-letter.php?id=<?= $row['id'] ?>" class="btn-view">View Cover Letter</a>
+                                <?php else: ?>
+                                    No Cover Letter
+                                <?php endif; ?>
+                            </td>
                             <td class="status-<?= strtolower($row['status']) ?>"><?= htmlspecialchars($row['status']) ?></td>
                             <td><?= date("M d, Y", strtotime($row['applied_at'])) ?></td>
                             <td>

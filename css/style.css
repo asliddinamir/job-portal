@@ -59,6 +59,19 @@ header {
     transition: 0.3s ease-in-out;
 }
 
+.admin-logo h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-logo h1:hover {
+    letter-spacing: 1.2px;
+    transition: 0.3s ease-in-out;
+}
+
 /* Navigation */
 nav ul {
     list-style: none;
@@ -567,7 +580,7 @@ footer {
 
 /* Admin Dashboard */
 .admin-container {
-    max-width: 1000px;
+    width: 95%;
     background: white;
     color: black;
     padding: 30px;
@@ -599,7 +612,11 @@ footer {
 .admin-table th {
     background: #1e3c72;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.admin-table td {
+    font-size: 14px;
 }
 
 /* Status Colors */
@@ -644,6 +661,34 @@ footer {
     background: #e6b800;
     transform: scale(1.05);
 }
+
+/* View Resume Button */
+.btn-view {
+    display: inline-block;
+    background: #ffcc00;
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-view:hover {
+    background: #e6b800;
+}
+
+.filter-form select , .status-form select {
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background: white; 
+    border-radius: 5px;
+}
+
+.status-form select {
+    margin: 0;
+}   
 
 /* No Applications Message */
 .no-applications {
@@ -915,5 +960,3 @@ footer {
 .reset-form button {
     width: 50%;
 }
-
-

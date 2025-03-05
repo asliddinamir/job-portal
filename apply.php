@@ -125,7 +125,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="apply-group">
                 <i class="fas fa-file-alt"></i>
-                <input type="file" name="resume" placeholder="Resume" required accept=".pdf, .doc, .docx">
+                <span class="file-placeholder" style="color: #888; margin-right: 10px">Resume</span>
+                <input type="file" name="resume" placeholder="Resume" required accept=".pdf, .doc, .docx" 
+                    style="color: inherit;">
+                
             </div>
 
             <div class="apply-group">

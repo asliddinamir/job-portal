@@ -11,13 +11,10 @@ function togglePassword(inputId, eyeIcon) {
     }
 }
 
-// function validatePasswords() {
-//     var password = document.getElementById("password").value;
-//     var confirmPassword = document.getElementById("confirm-password").value;
-
-//     if (password !== confirmPassword) {
-//         document.getElementById("password-message").textContent = "❌ Passwords do not match!";
-//         return false;
-//     }
-//     return true;
-// }
+function updateFileName(input) {
+    const placeholder = document.querySelector('.file-placeholder');
+    if (input.files && input.files[0]) {
+        placeholder.textContent = input.files[0].name;
+        placeholder.style.color = '#333';
+    }
+}

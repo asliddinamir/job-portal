@@ -125,16 +125,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="apply-group" style="text-align: center; cursor: pointer;" onclick="document.querySelector('input[type=file]').click()">
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                    <i class="fas fa-upload" style="font-size: 2em;"></i>
+                    <i class="fas fa-upload" style="font-size: 2em; margin-right: 0"></i>
                     <span class="file-placeholder" style="color: #888;">Upload Resume</span>
                 </div>
-                <input type="file" name="resume" required accept=".pdf, .doc, .docx" style="display: none">
+                <input type="file" name="resume" required accept=".pdf, .doc, .docx" style="display: none" onchange="updateFileName(this)">
             </div>
-
-            <!-- <div class="apply-group" style="text-align: center;">
-                <i class="fas fa-upload" style="font-size: 2em; cursor: pointer;" onclick="document.querySelector('input[type=file]').click()"></i>
-                <input type="file" name="resume" required accept=".pdf, .doc, .docx" style="display: none">
-            </div> -->
 
             <div class="apply-group">
                 <i class="fas fa-file-alt"></i>

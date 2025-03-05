@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="job-listings.php">Jobs</a></li>
+                <li><a href="job-listings.php" class="active">Jobs</a></li>
                 <li><a href="register.php">Register</a></li>
                 <li><a href="login.php">Login</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
@@ -78,8 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
 
     <main class="apply-container">
-        <h2>Apply for <?= htmlspecialchars($job['job_title']) ?></h2>
-        <p><strong>Company:</strong> <?= htmlspecialchars($job['company_name']) ?></p>
+        <h2>Apply for <?= htmlspecialchars($job['job_title']) ?> role</h2>
+        <p class="apply-company"><strong>Company:</strong> <?= htmlspecialchars($job['company_name']) ?></p>
         <p><strong>Location:</strong> <?= htmlspecialchars($job['location']) ?></p>
         
         <?php if ($message): ?>
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="resume" required>
 
             <label for="cover_letter">Cover Letter:</label>
-            <textarea name="cover_letter" rows="5" required></textarea>
+            <textarea name="cover_letter" rows="5" required style="resize: none;"></textarea>
 
             <button type="submit">Submit Application</button>
         </form>

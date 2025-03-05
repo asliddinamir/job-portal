@@ -316,7 +316,7 @@ footer {
 /* Apply Button */
 .apply-btn {
     display: block;
-    width: 30%;
+    width: 20%;
     text-align: center;
     background: #ffcc00;
     color: black;
@@ -359,23 +359,31 @@ footer {
 
 .apply-form label {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .apply-form input, .apply-form textarea {
     width: 100%;
     padding: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
     border-radius: 5px;
     font-size: 16px;
 }
 
+.apply-form input:focus, .apply-form textarea:focus {
+    outline: none;
+}
+
 .apply-form button {
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-inline: auto;
+    width: 40%;
     padding: 12px;
     background: #ffcc00;
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
@@ -385,7 +393,6 @@ footer {
 
 .apply-form button:hover {
     background: #e6b800;
-    transform: scale(1.05);
 }
 
 /* Message */
@@ -394,6 +401,10 @@ footer {
     font-weight: bold;
     color: green;
     margin-bottom: 10px;
+}
+
+.apply-company {
+    margin-block: 10px;
 }
 
 

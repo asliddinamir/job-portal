@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,4 +36,4 @@
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
 </body>
-</html> -->
+</html>

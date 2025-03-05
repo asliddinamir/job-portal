@@ -46,14 +46,15 @@ header {
     width: 100%;
 }
 
-.logo h1 a {
+.logo h1 {
     font-size: 28px;
     font-weight: bold;
     color: #ffcc00;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.logo h1 a:hover {
+.logo h1:hover {
     letter-spacing: 1.2px;
     transition: 0.3s ease-in-out;
 }
@@ -794,4 +795,73 @@ footer {
 
 .toggle-password:hover {
     color: #333;
+}
+
+/* Forgot & Reset Password Containers */
+.forgot-password-container, .reset-password-container {
+    max-width: 400px;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 50px auto;
+    text-align: center;
+}
+
+.forgot-password-container h2, .reset-password-container h2 {
+    font-size: 24px;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.forgot-subtext, .reset-subtext {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.forgot-form, .reset-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+/* Forgot Password Link */
+.forgot-password {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #1e3c72;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.forgot-form button, .reset-form button {
+    padding: 12px;
+    width: 70%;
+    margin-inline: auto;
+    background: #ffcc00;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+
+.forgot-form button:hover, .reset-form button:hover {
+    background: #e6b800;
+    transform: scale(1.01);
+}
+
+.reset-form button {
+    width: 50%;
 }

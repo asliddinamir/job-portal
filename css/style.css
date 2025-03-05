@@ -1021,12 +1021,21 @@ footer {
 .bulk-update-section {
     margin-top: 20px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: red;
     gap: 10px;
 }
 
 .bulk-update-section select, .bulk-update-section button {
     padding: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.bulk-update-section button {
+    font-weight: 600;
     font-size: 16px;
+    border-radius: 5px;
+    padding: 10px 15px; 
 }

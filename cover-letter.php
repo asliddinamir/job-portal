@@ -38,7 +38,8 @@ if (!$application) {
         </div>
         <nav>
             <ul>
-                <li><a href="admin-dashboard.php" class="active">Admin Panel</a></li>
+                <li><a href="manage-jobs.php">Manage Jobs</a></li>
+                <li><a href="manage-applications.php" class="active">Manage Applications</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -48,7 +49,7 @@ if (!$application) {
         <h2>Cover Letter - <?= htmlspecialchars($application['job_seeker_name']) ?></h2>
         <p class="cover-letter-text"><?= nl2br(htmlspecialchars($application['cover_letter'])) ?></p>
         <br>
-        <a href="admin-dashboard.php" class="btn">Back to Dashboard</a>
+        <a href="manage-applications.php" class="btn">Back to Dashboard</a>
     </main>
 
     <footer>

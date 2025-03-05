@@ -178,9 +178,8 @@ nav ul li a.active {
 
 .btn:hover {
     background: #e6b800;
-    transform: scale(1.02);
-    /* font-size: 19px; */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transform: scale(1.01);
+    /* box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25); */
 }
 
 /* ======= FOOTER (Fixed at Bottom) ======= */
@@ -977,7 +976,7 @@ footer {
 .job-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .job-table th, .job-table td {
@@ -999,6 +998,11 @@ footer {
     font-weight: bold;
 }
 
+.btn2:hover {
+    opacity: 0.8;
+    transition: 0.3s ease-in-out;
+}
+
 .btn-edit {
     background-color: #ffcc00;
     color: black;
@@ -1012,3 +1016,4 @@ footer {
 .btn:hover {
     opacity: 0.8;
 }
+

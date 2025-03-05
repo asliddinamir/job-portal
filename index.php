@@ -15,9 +15,8 @@
             <ul>
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="job-listings.php">Jobs</a></li>
-                <li><a href="register.php">Register</a></li>
-                <li><a href="login.php">Login</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

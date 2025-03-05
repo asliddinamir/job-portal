@@ -37,9 +37,8 @@ if (!$job) {
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="job-listings.php" class="active">Jobs</a></li>
-                <li><a href="register.php">Register</a></li>
-                <li><a href="login.php">Login</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

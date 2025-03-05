@@ -395,16 +395,121 @@ footer {
     background: #e6b800;
 }
 
-/* Message */
-.message {
-    font-size: 16px;
-    font-weight: bold;
-    color: green;
-    margin-bottom: 10px;
-}
-
-.apply-company {
+.apply-location {
     margin-block: 10px;
 }
 
+.message {
+    margin-top: 20px;
+    color: #1e3c72;
+}
 
+/* Success Page */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.success-box {
+    max-width: 600px;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.success-box h2 {
+    font-size: 26px;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.success-box p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.success-box .btn {
+    display: inline-block;
+    background: #ffcc00;
+    color: black;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.success-box .btn:hover {
+    background: #e6b800;
+    transform: scale(1);
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 900px;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    text-align: center;
+}
+
+.dashboard-container h2 {
+    font-size: 26px;
+    color: #1e3c72;
+    margin-bottom: 15px;
+}
+
+/* Job Applications Table */
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.dashboard-table th, .dashboard-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dashboard-table th {
+    background: #1e3c72;
+    color: white;
+    font-size: 16px;
+}
+
+.dashboard-table td {
+    font-size: 14px;
+}
+
+/* Status Colors */
+.status-pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.status-shortlisted {
+    color: green;
+    font-weight: bold;
+}
+
+.status-rejected {
+    color: red;
+    font-weight: bold;
+}
+
+/* No Applications Message */
+.no-applications {
+    font-size: 16px;
+    color: #777;
+    margin-top: 20px;
+}

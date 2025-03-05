@@ -82,58 +82,61 @@ $result = $conn->query($query);
         </form>
 
         <?php if ($result->num_rows > 0): ?>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>Job Title</th>
-                        <th>Applicant</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Resume</th>
-                        <th>Cover Letter</th>
-                        <th>Status</th>
-                        <th>Applied On</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($row = $result->fetch_assoc()): ?>
+            <form method="POST" action="bulk-update.php">
+                <table class="admin-table">
+                    <thead>
                         <tr>
-                            <td><?= htmlspecialchars($row['job_title']) ?></td>
-                            <td><?= htmlspecialchars($row['job_seeker_name']) ?></td>
-                            <td><?= htmlspecialchars($row['email']) ?></td>
-                            <td><?= htmlspecialchars($row['phone']) ?></td>
-                            <td>
-                                <?php if (!empty($row['resume'])): ?>
-                                    <a href="<?= htmlspecialchars($row['resume']) ?>" target="_blank" class="btn-view">View Resume</a>
-                                <?php else: ?>
-                                    No Resume
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if (!empty($row['cover_letter'])): ?>
-                                    <a href="cover-letter.php?id=<?= $row['id'] ?>" class="btn-view">View Cover Letter</a>
-                                <?php else: ?>
-                                    No Cover Letter
-                                <?php endif; ?>
-                            </td>
-                            <td class="status-<?= strtolower($row['status']) ?>"><?= htmlspecialchars($row['status']) ?></td>
-                            <td><?= date("M d, Y", strtotime($row['applied_at'])) ?></td>
-                            <td>
-                                <form method="POST" class="status-form">
-                                    <input type="hidden" name="application_id" value="<?= $row['id'] ?>">
-                                    <select name="status">
-                                        <option value="Pending" <?= ($row['status'] == 'Pending') ? 'selected' : '' ?>>Pending</option>
-                                        <option value="Shortlisted" <?= ($row['status'] == 'Shortlisted') ? 'selected' : '' ?>>Shortlisted</option>
-                                        <option value="Rejected" <?= ($row['status'] == 'Rejected') ? 'selected' : '' ?>>Rejected</option>
-                                    </select>
-                                    <button type="submit">Update</button>
-                                </form>
-                            </td>
+                            <th><input type="checkbox" id="select-all"></th>
+                            <th>Job Title</th>
+                            <th>Applicant</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Resume</th>
+                            <th>Cover Letter</th>
+                            <th>Status</th>
+                            <th>Applied On</th>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td><input type="checkbox" name="selected_applications[]" value="<?= $row['id'] ?>"></td>
+                                <td><?= htmlspecialchars($row['job_title']) ?></td>
+                                <td><?= htmlspecialchars($row['job_seeker_name']) ?></td>
+                                <td><?= htmlspecialchars($row['email']) ?></td>
+                                <td><?= htmlspecialchars($row['phone']) ?></td>
+                                <td>
+                                    <?php if (!empty($row['resume'])): ?>
+                                        <a href="uploads/<?= htmlspecialchars($row['resume']) ?>" target="_blank" class="btn-view">View Resume</a>
+                                    <?php else: ?>
+                                        No Resume
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if (!empty($row['cover_letter'])): ?>
+                                        <a href="cover-letter.php?id=<?= $row['id'] ?>" class="btn-view">View Cover Letter</a>
+                                    <?php else: ?>
+                                        No Cover Letter
+                                    <?php endif; ?>
+                                </td>
+                                <td class="status-<?= strtolower($row['status']) ?>"><?= htmlspecialchars($row['status']) ?></td>
+                                <td><?= date("M d, Y", strtotime($row['applied_at'])) ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+
+                <div class="bulk-update-section">
+                    <label for="bulk-status">Change Status to:</label>
+                    <select name="bulk_status">
+                        <option value="Pending">Pending</option>
+                        <option value="Shortlisted">Shortlisted</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                    <button type="submit" class="btn">Update Selected</button>
+                </div>
+            </form>
+
         <?php else: ?>
             <p class="no-applications">No applications received yet.</p>
         <?php endif; ?>
@@ -142,5 +145,12 @@ $result = $conn->query($query);
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
+    
+    <script>
+        document.getElementById("select-all").addEventListener("click", function() {
+            var checkboxes = document.querySelectorAll('input[name="selected_applications[]"]');
+            checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+        });
+    </script>
 </body>
 </html>

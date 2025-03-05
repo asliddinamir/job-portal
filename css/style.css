@@ -1017,3 +1017,16 @@ footer {
     opacity: 0.8;
 }
 
+/* Bulk Update Section */
+.bulk-update-section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    background-color: red;
+    gap: 10px;
+}
+
+.bulk-update-section select, .bulk-update-section button {
+    padding: 10px;
+    font-size: 16px;
+}

@@ -56,7 +56,7 @@ if (!$job) {
             <div class="job-video">
                 <h3>Job Insights</h3>
                 <video width="100%" controls>
-                    <source src="/assets/video/job-tips.mp4" type="video/mp4">
+                    <source src="assets/video/job-tips.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>

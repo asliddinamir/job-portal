@@ -99,7 +99,7 @@ nav ul li a.active {
     align-items: center;
     height: 86vh;
     width: 100%;
-    background: url("../images/bg-photo3.png") no-repeat center center/cover;
+    background: url("../assets/images/bg-photo3.png") no-repeat center center/cover;
     color: white;
 }
 
@@ -269,7 +269,7 @@ footer {
 }
 
 .job-ctr {
-    max-width: 800px;
+    width: 80%;
     background: white;
     color: black;
     padding: 30px;
@@ -333,4 +333,67 @@ footer {
 .apply-btn:hover {
     background: #e6b800;
 }
+
+/* Job Application Page */
+.apply-container {
+    width: 40%;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    text-align: left;
+}
+
+.apply-container h2 {
+    font-size: 24px;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.apply-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.apply-form label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.apply-form input, .apply-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.apply-form button {
+    margin-top: 15px;
+    padding: 12px;
+    background: #ffcc00;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+.apply-form button:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+}
+
+/* Message */
+.message {
+    font-size: 16px;
+    font-weight: bold;
+    color: green;
+    margin-bottom: 10px;
+}
+
 

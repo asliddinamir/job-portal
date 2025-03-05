@@ -15,7 +15,7 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
+    background: linear-gradient(90deg,#f7e6f0, #e7e9f8);
     color: #222;
 }
 p {
@@ -143,14 +143,15 @@ nav ul li a.active {
     text-decoration: none;
     font-weight: bold;
     border-radius: 25px;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     font-size: 18px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .btn:hover {
     background: #e6b800;
-    transform: scale(1.05);
+    transform: scale(1.02);
+    /* font-size: 19px; */
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -253,9 +254,83 @@ footer {
     font-size: 16px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     cursor: pointer;
+    font-weight: 500;
 }
 
 .search-form button:hover {
+    background: #e6b800;
+    transition: .3s ease-in-out;
+}
+
+/* Job Description Page */
+.job-detail {
+    padding: 50px;
+    text-align: center;
+}
+
+.job-ctr {
+    max-width: 800px;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    text-align: left;
+}
+
+.job-ctr h2 {
+    font-size: 28px;
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.job-ctr p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.job-ctr .description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Video Section */
+.job-video {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.job-video h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #1e3c72;
+}
+
+.job-video video {
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply Button */
+.apply-btn {
+    display: block;
+    width: 30%;
+    text-align: center;
+    background: #ffcc00;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 20px;
+    margin-inline: auto;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.apply-btn:hover {
     background: #e6b800;
 }
 

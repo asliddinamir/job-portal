@@ -513,3 +513,90 @@ footer {
     color: #777;
     margin-top: 20px;
 }
+
+/* Admin Dashboard */
+.admin-container {
+    max-width: 1000px;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    text-align: center;
+}
+
+.admin-container h2 {
+    font-size: 26px;
+    color: #1e3c72;
+    margin-bottom: 15px;
+}
+
+/* Applications Table */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.admin-table th {
+    background: #1e3c72;
+    color: white;
+    font-size: 16px;
+}
+
+/* Status Colors */
+.status-pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.status-shortlisted {
+    color: green;
+    font-weight: bold;
+}
+
+.status-rejected {
+    color: red;
+    font-weight: bold;
+}
+
+/* Status Form */
+.status-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status-form select {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.status-form button {
+    padding: 6px 12px;
+    background: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.status-form button:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+}
+
+/* No Applications Message */
+.no-applications {
+    font-size: 16px;
+    color: #777;
+    margin-top: 20px;
+}

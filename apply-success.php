@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1><a href="index.php">Jobify</a></h1>
+            <h1>Jobify</h1>
         </div>
         <nav>
             <ul>

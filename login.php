@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user['role'] == 'admin') {
             header("Location: admin-dashboard.php");
         } else {
-            header("Location: dashboard.php");
+            header("Location: index.php");
         }
         exit();
     } else {
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <div class="logo">
-            <h1><a href="index.php">Jobify</a></h1>
+            <h1>Jobify</h1>
         </div>
     </header>
 
@@ -81,6 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
-    <script src="js/toggle.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

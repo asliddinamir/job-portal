@@ -27,19 +27,25 @@ if (!$user) {
 // Handle password reset
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = trim($_POST["password"]);
-    $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+    $confirm_password = trim($_POST["confirm_password"]);
 
-    // Update the password and clear the token
-    $updateQuery = "UPDATE users SET password = ?, reset_token = NULL WHERE email = ?";
-    $stmt = $conn->prepare($updateQuery);
-    $stmt->bind_param("ss", $hashedPassword, $email);
-
-    if ($stmt->execute()) {
-        $message = "✅ Password has been reset successfully! Redirecting to login...";
-        session_destroy();
-        header("refresh:3;url=login.php");
+    if ($new_password !== $confirm_password) {
+        $message = "❌ Passwords do not match. Please try again.";
     } else {
-        $message = "❌ Failed to reset password.";
+        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+
+        // Update the password and clear the token
+        $updateQuery = "UPDATE users SET password = ?, reset_token = NULL WHERE email = ?";
+        $stmt = $conn->prepare($updateQuery);
+        $stmt->bind_param("ss", $hashedPassword, $email);
+
+        if ($stmt->execute()) {
+            $message = "✅ Password has been reset successfully! Redirecting to login...";
+            session_destroy();
+            header("refresh:3;url=login.php");
+        } else {
+            $message = "❌ Failed to reset password.";
+        }
     }
 }
 ?>
@@ -56,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <div class="logo">
-            <h1><a href="index.php">Jobify</a></h1>
+            <h1>Jobify</h1>
         </div>
     </header>
 
@@ -68,10 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p class="message"><?= $message ?></p>
         <?php endif; ?>
 
-        <form method="POST" class="reset-form">
+        <form method="POST" class="reset-form" onsubmit="return validatePasswords()">
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="New Password" required>
+                <input type="password" name="password" id="password" placeholder="New Password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePassword('password', this)"></i>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePassword('confirm-password', this)"></i>
             </div>
 
             <button type="submit">Reset Password</button>
@@ -81,5 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

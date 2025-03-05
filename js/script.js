@@ -10,3 +10,14 @@ function togglePassword(inputId, eyeIcon) {
         eyeIcon.classList.add("fa-eye");
     }
 }
+
+// function validatePasswords() {
+//     var password = document.getElementById("password").value;
+//     var confirmPassword = document.getElementById("confirm-password").value;
+
+//     if (password !== confirmPassword) {
+//         document.getElementById("password-message").textContent = "❌ Passwords do not match!";
+//         return false;
+//     }
+//     return true;
+// }

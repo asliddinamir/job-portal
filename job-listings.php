@@ -123,6 +123,19 @@ $result = $conn->query($query);
                     echo '<p><strong>Category:</strong> ' . htmlspecialchars($row["category"]) . '</p>';
                     echo '<p><strong>Location:</strong> ' . htmlspecialchars($row["location"]) . '</p>';
                     echo '<a href="job-description.php?id=' . $row["id"] . '" class="btn">View Details</a>';
+
+                    // Check if job is already saved
+                    $checkQuery = "SELECT * FROM saved_jobs WHERE user_id = ? AND job_id = ?";
+                    $stmtCheck = $conn->prepare($checkQuery);
+                    $stmtCheck->bind_param("ii", $_SESSION['user_id'], $row["id"]);
+                    $stmtCheck->execute();
+                    $isSaved = $stmtCheck->get_result()->num_rows > 0;
+
+                    // Show correct save/unsave icon
+                    echo '<a href="save-job.php?job_id=' . $row["id"] . '" class="save-btn">';
+                    echo '<i class="' . ($isSaved ? 'fas' : 'far') . ' fa-bookmark"></i>';
+                    echo '</a>';
+
                     echo '</div>';
                 }
             } else {
@@ -131,7 +144,6 @@ $result = $conn->query($query);
             ?>
         </div>
     </main>
-
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>

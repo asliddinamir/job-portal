@@ -1149,3 +1149,17 @@ footer {
     background: rgb(232, 4, 4) !important;
     border-radius: 5px !important;
 }
+
+.save-btn {
+    background: none;
+    text-align: right;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: #ffcc00; /* Default color */
+    margin-left: 10px;
+}
+
+.save-btn:hover {
+    transform: scale(1.1);
+}

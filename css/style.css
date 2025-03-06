@@ -76,6 +76,7 @@ header {
 nav ul {
     list-style: none;
     display: flex;
+    margin-right: 30px;
 }
 
 nav ul li {
@@ -1038,4 +1039,113 @@ footer {
     font-size: 16px;
     border-radius: 5px;
     padding: 10px 15px; 
+}
+
+/* Profile Icon */
+.profile-icon {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: red;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100vh;
+    background: #142850;
+    color: white;
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    padding-top: 12px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.show {
+    right: 0;
+}
+
+.sidebar-header {
+    text-align: right;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.user-info {
+    text-align: left;
+    margin: 0 0 15px 10px;
+}
+
+.user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.sidebar-menu li i{
+    padding-right: 10px;
+}
+
+.sidebar-menu a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+
+.sidebar-menu a:hover {
+    opacity: 0.8;
+    background: #214182;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.logout-btn {
+    background: red;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    display: block;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background: rgb(232, 4, 4) !important;
+    border-radius: 5px !important;
 }

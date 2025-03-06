@@ -1,9 +1,13 @@
 <?php
+session_start();
 include 'php/config.php';
 
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 $location = isset($_GET['location']) ? $_GET['location'] : '';
+
+$user_email = $_SESSION['email']; // Now using session data
+
 
 // Fetch unique categories for the dropdown
 $categoryQuery = "SELECT DISTINCT category FROM jobs";
@@ -38,6 +42,7 @@ $result = $conn->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobify | Job Listings</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <header>
@@ -49,12 +54,38 @@ $result = $conn->query($query);
                 <li><a href="index.php">Home</a></li>
                 <li><a href="job-listings.php" class="active">Jobs</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                 <!-- Profile Icon -->
+                 <div class="profile-icon" onclick="toggleSidebar()">
+                    <img src="assets/images/profile.png" alt="Profile">
+                </div>
             </ul>
         </nav>
     </header>
 
     <main class="job-listings">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <button class="close-btn" onclick="toggleSidebar()">×</button>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="user-info">
+                    <img src="assets/images/profile.png" alt="Profile">
+                    <p><strong><?= $_SESSION['name'] ?></strong></p>
+                    <p><?= $_SESSION['email'] ?></p>
+                </div>
+
+                <hr>
+
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="#"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                    <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
         <h2>Available Jobs</h2>
 
         <!-- Search & Filter Form -->
@@ -102,5 +133,6 @@ $result = $conn->query($query);
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

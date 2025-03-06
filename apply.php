@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Include database connection
 include 'php/config.php';
 
@@ -92,12 +93,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="index.php">Home</a></li>
                 <li><a href="job-listings.php" class="active">Jobs</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                 <!-- Profile Icon -->
+                 <div class="profile-icon" onclick="toggleSidebar()">
+                    <img src="assets/images/profile.png" alt="Profile">
+                </div>
             </ul>
         </nav>
     </header>
 
     <main class="apply-container">
+                <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <button class="close-btn" onclick="toggleSidebar()">×</button>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="user-info">
+                    <img src="assets/images/profile.png" alt="Profile">
+                    <p><strong><?= $_SESSION['name'] ?></strong></p>
+                    <p><?= $_SESSION['email'] ?></p>
+                </div>
+
+                <hr>
+
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="#"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                    <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
         <h2>Apply for <?= htmlspecialchars($job['job_title']) ?> role</h2>
         <p><strong>Company:</strong> <?= htmlspecialchars($job['company_name']) ?></p>
         <p class="apply-location"><strong>Location:</strong> <?= htmlspecialchars($job['location']) ?></p>

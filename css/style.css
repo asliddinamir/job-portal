@@ -681,6 +681,19 @@ footer {
     transition: 0.3s ease-in-out;
 }
 
+.description {
+    background: #f9f9f9;
+    text-align: left;
+    padding: 10px;
+    margin-block: 20px;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+}
+
+#job-description {
+    text-align: left;
+}
+
 .btn-view:hover {
     background: #e6b800;
 }

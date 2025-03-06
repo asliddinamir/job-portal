@@ -28,12 +28,14 @@ $result = $conn->query($query);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employer Dashboard | Jobify</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <div class="admin-logo">
@@ -66,6 +68,7 @@ $result = $conn->query($query);
                         <th>Category</th>
                         <th>Location</th>
                         <th>Salary</th>
+                        <th>Description</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -77,13 +80,17 @@ $result = $conn->query($query);
                             <td><?= htmlspecialchars($row['category']) ?></td>
                             <td><?= htmlspecialchars($row['location']) ?></td>
                             <td>$<?= htmlspecialchars($row['salary']) ?></td>
+                            <td>
+                                <a href="view-job-description.php?id=<?= $row['id'] ?>" class="btn-view">View Description</a>
+                            </td>
                             <td class="action-btns">
-                                <a href="edit-job.php?id=<?= $row['id'] ?>" class="btn2 btn-edit" >✏️ Edit</a>
+                                <a href="edit-job.php?id=<?= $row['id'] ?>" class="btn2 btn-edit">✏️ Edit</a>
                                 <a href="employer-dashboard.php?delete_id=<?= $row['id'] ?>" class="btn2 btn-delete" onclick="return confirm('Are you sure you want to delete this job?')">🗑️ Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
+
             </table>
         <?php else: ?>
             <p class="no-jobs">No job listings available.</p>
@@ -94,4 +101,5 @@ $result = $conn->query($query);
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
 </body>
+
 </html>

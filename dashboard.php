@@ -80,7 +80,8 @@ $result = $stmt->get_result(); // Get the result set
 
         <h2>My Job Applications</h2>
 
-        <?php if ($result->num_rows > 0): // Check if there are any applications ?>
+        <?php if ($result->num_rows > 0): // Check if there are any applications 
+        ?>
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -92,7 +93,8 @@ $result = $stmt->get_result(); // Get the result set
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = $result->fetch_assoc()): // Fetch each application ?>
+                    <?php while ($row = $result->fetch_assoc()): // Fetch each application 
+                    ?>
                         <tr>
                             <td><?= htmlspecialchars($row['job_title']) ?></td>
                             <td><?= htmlspecialchars($row['company_name']) ?></td>
@@ -106,6 +108,8 @@ $result = $stmt->get_result(); // Get the result set
         <?php else: ?>
             <p class="no-applications">You have not applied for any jobs yet.</p>
         <?php endif; ?>
+        <!-- Apply Now Button -->
+        <a href="job-description.php" class="apply-btn" style="width: 40%;">Apply More Jobs</a>
     </main>
 
     <footer>

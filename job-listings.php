@@ -1,13 +1,13 @@
 <?php
-session_start();
-include 'php/config.php';
+session_start(); // Start the session
+include 'php/config.php'; // Include the database configuration file
 
+// Get search, category, and location from GET parameters if they exist
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 $location = isset($_GET['location']) ? $_GET['location'] : '';
 
-$user_email = $_SESSION['email']; // Now using session data
-
+$user_email = $_SESSION['email']; // Get the user's email from the session
 
 // Fetch unique categories for the dropdown
 $categoryQuery = "SELECT DISTINCT category FROM jobs";
@@ -31,8 +31,8 @@ if (!empty($location)) {
     $query .= " AND location = '$location'";
 }
 
-$query .= " ORDER BY date_posted DESC";
-$result = $conn->query($query);
+$query .= " ORDER BY date_posted DESC"; // Order by date posted in descending order
+$result = $conn->query($query); // Execute the query
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +42,14 @@ $result = $conn->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobify | Job Listings</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to the stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- Link to Font Awesome for icons -->
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <h1>Jobify</h1>
+            <h1>Jobify</h1> <!-- Website logo -->
         </div>
         <nav>
             <ul>
@@ -58,7 +58,7 @@ $result = $conn->query($query);
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <!-- Profile Icon -->
                 <div class="profile-icon" onclick="toggleSidebar()">
-                    <img src="assets/images/profile.png" alt="Profile">
+                    <img src="assets/images/profile.png" alt="Profile"> <!-- Profile icon image -->
                 </div>
             </ul>
         </nav>
@@ -68,14 +68,14 @@ $result = $conn->query($query);
         <!-- Sidebar -->
         <div id="sidebar" class="sidebar">
             <div class="sidebar-header">
-                <button class="close-btn" onclick="toggleSidebar()">×</button>
+                <button class="close-btn" onclick="toggleSidebar()">×</button> <!-- Close button for sidebar -->
             </div>
 
             <div class="sidebar-content">
                 <div class="user-info">
-                    <img src="assets/images/profile.png" alt="Profile">
-                    <p><strong><?= $_SESSION['name'] ?></strong></p>
-                    <p><?= $_SESSION['email'] ?></p>
+                    <img src="assets/images/profile.png" alt="Profile"> <!-- User profile image -->
+                    <p><strong><?= $_SESSION['name'] ?></strong></p> <!-- User name from session -->
+                    <p><?= $_SESSION['email'] ?></p> <!-- User email from session -->
                 </div>
 
                 <hr>
@@ -92,7 +92,7 @@ $result = $conn->query($query);
 
         <!-- Search & Filter Form -->
         <form method="GET" class="search-form">
-            <input type="text" name="search" placeholder="Search for jobs..." value="<?= htmlspecialchars($search) ?>">
+            <input type="text" name="search" placeholder="Search for jobs..." value="<?= htmlspecialchars($search) ?>"> <!-- Search input -->
             <select name="category">
                 <option value="">All Categories</option>
                 <?php while ($row = $categoryResult->fetch_assoc()): ?>
@@ -109,7 +109,7 @@ $result = $conn->query($query);
                     </option>
                 <?php endwhile; ?>
             </select>
-            <button type="submit">Filter</button>
+            <button type="submit">Filter</button> <!-- Filter button -->
         </form>
 
         <!-- Job Listings -->
@@ -119,16 +119,16 @@ $result = $conn->query($query);
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="job-card">';
                     echo '<div class="job-info">';
-                    echo '<h3>' . htmlspecialchars($row["job_title"]) . '</h3>';
-                    echo '<p><strong>Company:</strong> ' . htmlspecialchars($row["company_name"]) . '</p>';
-                    echo '<p><strong>Category:</strong> ' . htmlspecialchars($row["category"]) . '</p>';
-                    echo '<p><strong>Location:</strong> ' . htmlspecialchars($row["location"]) . '</p>';
+                    echo '<h3>' . htmlspecialchars($row["job_title"]) . '</h3>'; // Job title
+                    echo '<p><strong>Company:</strong> ' . htmlspecialchars($row["company_name"]) . '</p>'; // Company name
+                    echo '<p><strong>Category:</strong> ' . htmlspecialchars($row["category"]) . '</p>'; // Job category
+                    echo '<p><strong>Location:</strong> ' . htmlspecialchars($row["location"]) . '</p>'; // Job location
                     echo '</div>';
 
                     echo '<div class="job-actions">';
 
                     // View Details Button
-                    echo '<a href="job-description.php?id=' . $row["id"] . '" class="btn">View Details</a>';
+                    echo '<a href="job-description.php?id=' . $row["id"] . '" class="btn">View Details</a>'; // View details button
 
                     // Check if job is already saved
                     $checkQuery = "SELECT * FROM saved_jobs WHERE user_id = ? AND job_id = ?";
@@ -139,23 +139,23 @@ $result = $conn->query($query);
 
                     // Show correct save/unsave icon
                     echo '<a href="save-job.php?job_id=' . $row["id"] . '" class="save-btn">';
-                    echo '<i class="' . ($isSaved ? 'fas' : 'far') . ' fa-bookmark"></i>';
+                    echo '<i class="' . ($isSaved ? 'fas' : 'far') . ' fa-bookmark"></i>'; // Save/unsave icon
                     echo '</a>';
 
                     echo '</div>'; // Close job-actions
                     echo '</div>'; // Close job-card
                 }
             } else {
-                echo "<p>No jobs available.</p>";
+                echo "<p>No jobs available.</p>"; // Message if no jobs are available
             }
             ?>
         </div>
 
     </main>
     <footer>
-        <p>&copy; 2025 Jobify. All Rights Reserved.</p>
+        <p>&copy; 2025 Jobify. All Rights Reserved.</p> <!-- Footer content -->
     </footer>
-    <script src="js/script.js"></script>
+    <script src="js/script.js"></script> <!-- Link to JavaScript file -->
 </body>
 
 </html>

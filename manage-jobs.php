@@ -1,6 +1,10 @@
 <?php
+// Start the session
 session_start();
+
+// Check if the user is logged in and is an admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+    // Redirect to login page if not logged in or not an admin
     header("Location: login.php");
     exit();
 }
@@ -10,10 +14,13 @@ include 'php/config.php';
 
 // Handle job deletion
 if (isset($_GET['delete_id'])) {
+    // Get the job ID to delete
     $delete_id = intval($_GET['delete_id']);
+    // Prepare the delete query
     $deleteQuery = "DELETE FROM jobs WHERE id = ?";
     $stmt = $conn->prepare($deleteQuery);
     $stmt->bind_param("i", $delete_id);
+    // Execute the query and set the message based on success or failure
     if ($stmt->execute()) {
         $message = "✅ Job deleted successfully!";
     } else {
@@ -53,12 +60,15 @@ $result = $conn->query($query);
     <main id="manage-jobs">
         <h2>Manage Job Listings</h2>
 
+        <!-- Display message if set -->
         <?php if (isset($message)): ?>
             <p class="message"><?= $message ?></p>
         <?php endif; ?>
 
+        <!-- Link to add a new job -->
         <a href="add-job.php" class="btn">➕ Add New Job</a>
 
+        <!-- Display job listings if available -->
         <?php if ($result->num_rows > 0): ?>
             <table class="job-table">
                 <thead>
@@ -73,6 +83,7 @@ $result = $conn->query($query);
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Loop through each job and display in the table -->
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
                             <td><?= htmlspecialchars($row['job_title']) ?></td>
@@ -90,9 +101,9 @@ $result = $conn->query($query);
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
-
             </table>
         <?php else: ?>
+            <!-- Display message if no jobs are available -->
             <p class="no-jobs">No job listings available.</p>
         <?php endif; ?>
     </main>

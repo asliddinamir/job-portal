@@ -1,41 +1,41 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
+session_start(); // Start the session
+if (!isset($_SESSION['user_id'])) { // Check if the user is not logged in
+    header("Location: login.php"); // Redirect to login page
+    exit(); // Exit the script
 }
 
-include 'php/config.php';
+include 'php/config.php'; // Include the database configuration file
 
-$user_id = $_SESSION['user_id'];
-$query = "SELECT name, email, phone FROM users WHERE id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
+$user_id = $_SESSION['user_id']; // Get the user ID from the session
+$query = "SELECT name, email, phone FROM users WHERE id = ?"; // SQL query to fetch user details
+$stmt = $conn->prepare($query); // Prepare the SQL statement
+$stmt->bind_param("i", $user_id); // Bind the user ID parameter
+$stmt->execute(); // Execute the statement
+$result = $stmt->get_result(); // Get the result set
+$user = $result->fetch_assoc(); // Fetch the user details as an associative array
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Profile | Jobify</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta charset="UTF-8"> <!-- Set the character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Set the viewport for responsive design -->
+    <title>Your Profile | Jobify</title> <!-- Page title -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- Link to Font Awesome CSS -->
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <h1>Jobify</h1>
+            <h1>Jobify</h1> <!-- Website logo -->
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="job-listings.php">Jobs</a></li>
+                <li><a href="index.php">Home</a></li> <!-- Navigation link to Home page -->
+                <li><a href="job-listings.php">Jobs</a></li> <!-- Navigation link to Jobs page --
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <!-- Profile Icon -->
                 <div class="profile-icon" onclick="toggleSidebar()">

@@ -50,3 +50,63 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleSidebar(); // Toggle the sidebar visibility
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".register-form");
+    const errorMessage = document.querySelector(".error-message");
+    
+    form.addEventListener("submit", function (event) {
+        let valid = true;
+        errorMessage.innerHTML = ""; // Clear previous error messages
+
+        // Validate Phone Number (Only digits, 10-15 characters)
+        const phoneInput = form.querySelector('input[name="phone"]');
+        if (!/^\d{10,15}$/.test(phoneInput.value)) {
+            errorMessage.innerHTML += "<p>❌ Phone number must be 10-15 digits.</p>";
+            valid = false;
+        }
+
+        // Validate Email Format
+        const emailInput = form.querySelector('input[name="email"]');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+            errorMessage.innerHTML += "<p>❌ Invalid email format.</p>";
+            valid = false;
+        }
+
+        // Validate Password Length (Min 5 characters)
+        const passwordInput = form.querySelector('input[name="password"]');
+        if (passwordInput.value.length < 5) {
+            errorMessage.innerHTML += "<p>❌ Password must be at least 5 characters long.</p>";
+            valid = false;
+        }
+
+        if (!valid) event.preventDefault(); // Stop form submission if validation fails
+    });
+});
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const form = document.querySelector(".reset-form");
+//     // const errorMessage = document.querySelector(".error-message");
+
+//     form.addEventListener("submit", function (event) {
+//         let valid = true;
+
+//         // Validate Password Length (Min 5 characters)
+//         const passwordInput = form.querySelector('input[name="password"]');
+//         if (passwordInput.value.length < 5) {
+//             alert("❌ Password must be at least 5 characters long.");
+//             valid = false;
+//         }
+
+//         // Validate Password Match
+//         const confirmPasswordInput = form.querySelector('input[name="confirm_password"]');
+//         if (passwordInput.value !== confirmPasswordInput.value) {
+//             alert("❌ Passwords do not match.");
+//             valid = false;
+//         }
+
+//         if (!valid) event.preventDefault(); // Stop form submission if validation fails
+//     });
+// });
+
+

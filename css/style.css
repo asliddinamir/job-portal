@@ -1183,3 +1183,9 @@ footer {
 .save-btn:hover {
     transform: scale(1.1);
 }
+
+.error-message {
+    color: red !important;
+    font-size: 24px;
+    margin-top: 5px;
+}

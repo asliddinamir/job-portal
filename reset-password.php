@@ -1,8 +1,9 @@
 <?php
 session_start(); // Start the session
-include 'php/config.php'; // Include the database configuration file
+include 'php/config.php'; // Include database configuration
 
 $message = ""; // Initialize the message variable
+$errors = []; // Initialize the errors array
 
 // Ensure a valid session reset token exists
 if (!isset($_SESSION['reset_token']) || !isset($_SESSION['reset_email'])) {
@@ -14,37 +15,46 @@ $token = $_SESSION['reset_token']; // Get the reset token from session
 
 // Validate token in database
 $query = "SELECT * FROM users WHERE email = ? AND reset_token = ?";
-$stmt = $conn->prepare($query); // Prepare the SQL statement
-$stmt->bind_param("ss", $email, $token); // Bind parameters
-$stmt->execute(); // Execute the statement
-$result = $stmt->get_result(); // Get the result
-$user = $result->fetch_assoc(); // Fetch the user data
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ss", $email, $token);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 
 if (!$user) {
-    die("❌ Invalid or expired reset request."); // Terminate if no user found
+    die("❌ Invalid or expired reset request.");
 }
 
 // Handle password reset
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $new_password = trim($_POST["password"]); // Get the new password
-    $confirm_password = trim($_POST["confirm_password"]); // Get the confirm password
+    $new_password = trim($_POST["password"]);
+    $confirm_password = trim($_POST["confirm_password"]);
 
+    // Validate password (minimum 5 characters)
+    if (strlen($new_password) < 5) {
+        $errors['password'] = "❌ Password must be at least 5 characters long.";
+    }
+
+    // Validate password match
     if ($new_password !== $confirm_password) {
-        $message = "❌ Passwords do not match. Please try again."; // Set error message if passwords do not match
-    } else {
-        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT); // Hash the new password
+        $errors['confirm_password'] = "❌ Passwords do not match.";
+    }
 
-        // Update the password and clear the token
+    // Proceed only if no errors
+    if (empty($errors)) {
+        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+
+        // Update the password and clear the reset token
         $updateQuery = "UPDATE users SET password = ?, reset_token = NULL WHERE email = ?";
-        $stmt = $conn->prepare($updateQuery); // Prepare the update statement
-        $stmt->bind_param("ss", $hashedPassword, $email); // Bind parameters
+        $stmt = $conn->prepare($updateQuery);
+        $stmt->bind_param("ss", $hashedPassword, $email);
 
         if ($stmt->execute()) {
-            $message = "✅ Password has been reset successfully! Redirecting to login..."; // Set success message
-            session_destroy(); // Destroy the session
-            header("refresh:3;url=login.php"); // Redirect to login page after 3 seconds
+            $message = "✅ Password has been reset successfully! Redirecting to login...";
+            session_destroy();
+            header("refresh:3;url=login.php");
         } else {
-            $message = "❌ Failed to reset password."; // Set error message if update fails
+            $message = "❌ Failed to reset password.";
         }
     }
 }
@@ -56,13 +66,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password | Jobify</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Link to the stylesheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- Link to Font Awesome -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1>Jobify</h1> <!-- Website logo -->
+            <h1>Jobify</h1>
         </div>
     </header>
 
@@ -71,30 +81,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p class="reset-subtext">Enter a new password for your account.</p>
 
         <?php if ($message): ?>
-            <p class="message"><?= $message ?></p> <!-- Display message if set -->
+            <p class="message"><?= $message ?></p> <!-- Success or Failure Message -->
         <?php endif; ?>
 
-        <form method="POST" class="reset-form" onsubmit="return validatePasswords()">
+        <form method="POST" class="reset-form">
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="password" id="password" placeholder="New Password" required> <!-- New password input -->
-                <i class="fas fa-eye toggle-password" onclick="togglePassword('password', this)"></i> <!-- Toggle password visibility -->
+                <input type="password" name="password" id="password" placeholder="New Password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePassword('password', this)"></i>
             </div>
+            <?php if (isset($errors['password'])): ?>
+                <p class="message" style="font-size: 14px; text-align: left; margin-block: 0;"><?= $errors['password'] ?></p>
+            <?php endif; ?>
 
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required> <!-- Confirm password input -->
-                <i class="fas fa-eye toggle-password" onclick="togglePassword('confirm-password', this)"></i> <!-- Toggle password visibility -->
+                <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePassword('confirm-password', this)"></i>
             </div>
+            <?php if (isset($errors['password'])): ?>
+                <p class="message" style="font-size: 14px; text-align: left; margin-block: 0;"><?= $errors['confirm_password'] ?></p>
+            <?php endif; ?>
 
-            <button type="submit">Reset Password</button> <!-- Submit button -->
+            <button type="submit" style="width: 60%">Reset Password</button>
         </form>
     </main>
 
     <footer>
-        <p>&copy; 2025 Jobify. All Rights Reserved.</p> <!-- Footer content -->
+        <p>&copy; 2025 Jobify. All Rights Reserved.</p>
     </footer>
 
-    <script src="js/script.js"></script> <!-- Link to the JavaScript file -->
+    <script src="js/script.js"></script>
 </body>
 </html>

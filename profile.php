@@ -72,6 +72,7 @@ $user = $result->fetch_assoc();
         <div class="apply-from user-info">
             <h2 style="text-align: center;">Your Profile</h2>
             <img src="assets/images/profile.png" alt="Profile Picture">
+            <br>
             <h2><?= htmlspecialchars($user['name']) ?></h2>
             <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
             <br>

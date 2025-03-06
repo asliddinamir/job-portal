@@ -63,7 +63,7 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="hero-content">
                 <h1>Find Your Perfect Job with Jobify</h1>
-                <p>Jobify connects job seekers with top companies, making job hunting effortless.
+                <p class="hero-p">Jobify connects job seekers with top companies, making job hunting effortless.
                     Browse thousands of opportunities across different industries and take the next step in your career.</p>
                 <ul class="benefits-list">
                     <li>✔ Explore jobs from trusted companies</li>

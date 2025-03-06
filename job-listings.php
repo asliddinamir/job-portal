@@ -118,10 +118,16 @@ $result = $conn->query($query);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="job-card">';
+                    echo '<div class="job-info">';
                     echo '<h3>' . htmlspecialchars($row["job_title"]) . '</h3>';
                     echo '<p><strong>Company:</strong> ' . htmlspecialchars($row["company_name"]) . '</p>';
                     echo '<p><strong>Category:</strong> ' . htmlspecialchars($row["category"]) . '</p>';
                     echo '<p><strong>Location:</strong> ' . htmlspecialchars($row["location"]) . '</p>';
+                    echo '</div>';
+
+                    echo '<div class="job-actions">';
+
+                    // View Details Button
                     echo '<a href="job-description.php?id=' . $row["id"] . '" class="btn">View Details</a>';
 
                     // Check if job is already saved
@@ -136,13 +142,15 @@ $result = $conn->query($query);
                     echo '<i class="' . ($isSaved ? 'fas' : 'far') . ' fa-bookmark"></i>';
                     echo '</a>';
 
-                    echo '</div>';
+                    echo '</div>'; // Close job-actions
+                    echo '</div>'; // Close job-card
                 }
             } else {
                 echo "<p>No jobs available.</p>";
             }
             ?>
         </div>
+
     </main>
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p>

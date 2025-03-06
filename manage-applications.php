@@ -107,7 +107,7 @@ $result = $conn->query($query);
                                 <td><?= htmlspecialchars($row['phone']) ?></td>
                                 <td>
                                     <?php if (!empty($row['resume'])): ?>
-                                        <a href="uploads/<?= htmlspecialchars($row['resume']) ?>" target="_blank" class="btn-view">View Resume</a>
+                                        <a href="<?= htmlspecialchars($row['resume']) ?>" target="_blank" class="btn-view">View Resume</a>
                                     <?php else: ?>
                                         No Resume
                                     <?php endif; ?>

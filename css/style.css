@@ -1037,7 +1037,8 @@ footer {
 .bulk-update-section select, .bulk-update-section button {
     padding: 10px;
     font-size: 14px;
-    border: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     cursor: pointer;
 }
 

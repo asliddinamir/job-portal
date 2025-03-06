@@ -65,9 +65,9 @@ if (!$job) {
                 <hr>
 
                 <ul class="sidebar-menu">
-                    <li><a href="#"><i class="fas fa-user"></i> Your Profile</a></li>
-                    <li><a href="#"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                    <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="edit-profile.php"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="saved-jobs.php"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
                     <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>

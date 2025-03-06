@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Move uploaded file to the uploads directory
         if (move_uploaded_file($_FILES["resume"]["tmp_name"], $resume_file)) {
-            
+
             // Prevent duplicate applications
             $checkQuery = "SELECT * FROM applications WHERE job_id = ? AND email = ?";
             $checkStmt = $conn->prepare($checkQuery);
@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,6 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- FontAwesome Icons -->
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -93,8 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="index.php">Home</a></li>
                 <li><a href="job-listings.php" class="active">Jobs</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
-                 <!-- Profile Icon -->
-                 <div class="profile-icon" onclick="toggleSidebar()">
+                <!-- Profile Icon -->
+                <div class="profile-icon" onclick="toggleSidebar()">
                     <img src="assets/images/profile.png" alt="Profile">
                 </div>
             </ul>
@@ -102,12 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
 
     <main class="apply-container">
-                <!-- Sidebar -->
+        <!-- Sidebar -->
         <div id="sidebar" class="sidebar">
             <div class="sidebar-header">
                 <button class="close-btn" onclick="toggleSidebar()">×</button>
             </div>
-            
+
             <div class="sidebar-content">
                 <div class="user-info">
                     <img src="assets/images/profile.png" alt="Profile">
@@ -118,9 +120,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <hr>
 
                 <ul class="sidebar-menu">
-                    <li><a href="#"><i class="fas fa-user"></i> Your Profile</a></li>
-                    <li><a href="#"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                    <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="edit-profile.php"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="saved-jobs.php"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
                     <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>
@@ -129,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>Company:</strong> <?= htmlspecialchars($job['company_name']) ?></p>
         <p class="apply-location"><strong>Location:</strong> <?= htmlspecialchars($job['location']) ?></p>
         <p><strong>Salary:</strong> <?= htmlspecialchars($job['salary']) ?>/year</p>
-        
+
         <?php if ($message): ?>
             <p class="message"><?= $message ?></p>
         <?php endif; ?>
@@ -172,4 +174,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </footer>
     <script src='js/script.js'></script>
 </body>
+
 </html>

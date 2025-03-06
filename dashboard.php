@@ -28,6 +28,7 @@ $result = $stmt->get_result();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +36,7 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -50,7 +52,7 @@ $result = $stmt->get_result();
                     <img src="assets/images/profile.png" alt="Profile">
                 </div>
             </ul>
-        </nav>     
+        </nav>
     </header>
 
     <main class="dashboard-container">
@@ -59,7 +61,7 @@ $result = $stmt->get_result();
             <div class="sidebar-header">
                 <button class="close-btn" onclick="toggleSidebar()">×</button>
             </div>
-            
+
             <div class="sidebar-content">
                 <div class="user-info">
                     <img src="assets/images/profile.png" alt="Profile">
@@ -68,9 +70,9 @@ $result = $stmt->get_result();
                 </div>
                 <hr>
                 <ul class="sidebar-menu">
-                    <li><a href="#"><i class="fas fa-user"></i> Your Profile</a></li>
-                    <li><a href="#"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                    <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="edit-profile.php"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="saved-jobs.php"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
                     <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>
@@ -111,4 +113,5 @@ $result = $stmt->get_result();
     </footer>
     <script src="js/script.js"></script>
 </body>
+
 </html>

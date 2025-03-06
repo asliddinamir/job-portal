@@ -4,6 +4,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@ session_start();
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -21,10 +23,10 @@ session_start();
                 <li><a href="index.php">Home</a></li>
                 <li><a href="job-listings.php" class="active">Jobs</a></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
-                 <!-- Profile Icon -->
-                 <div class="profile-icon" onclick="toggleSidebar()">
+                <!-- Profile Icon -->
+                <div class="profile-icon" onclick="toggleSidebar()">
                     <img src="assets/images/profile.png" alt="Profile">
-                </div>   
+                </div>
             </ul>
         </nav>
     </header>
@@ -35,7 +37,7 @@ session_start();
             <div class="sidebar-header">
                 <button class="close-btn" onclick="toggleSidebar()">×</button>
             </div>
-            
+
             <div class="sidebar-content">
                 <div class="user-info">
                     <img src="assets/images/profile.png" alt="Profile">
@@ -44,9 +46,9 @@ session_start();
                 </div>
                 <hr>
                 <ul class="sidebar-menu">
-                    <li><a href="#"><i class="fas fa-user"></i> Your Profile</a></li>
-                    <li><a href="#"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+                    <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="edit-profile.php"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="saved-jobs.php"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
                     <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>
@@ -66,4 +68,5 @@ session_start();
     </footer>
     <script src="js/script.js"></script>
 </body>
+
 </html>

@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Apply for <?= htmlspecialchars($job['job_title']) ?> role</h2>
         <p><strong>Company:</strong> <?= htmlspecialchars($job['company_name']) ?></p>
         <p class="apply-location"><strong>Location:</strong> <?= htmlspecialchars($job['location']) ?></p>
-        <p><strong>Salary:</strong> <?= htmlspecialchars($job['salary']) ?>/year</p>
+        <p><strong>Salary:</strong> $<?= htmlspecialchars($job['salary']) ?>/year</p>
 
         <?php if ($message): ?>
             <p class="message"><?= $message ?></p>

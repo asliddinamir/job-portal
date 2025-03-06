@@ -76,7 +76,7 @@ if (!$job) {
             <h2><?= htmlspecialchars($job['job_title']) ?></h2>
             <p><strong>Company:</strong> <?= htmlspecialchars($job['company_name']) ?></p>
             <p><strong>Location:</strong> <?= htmlspecialchars($job['location']) ?></p>
-            <p><strong>Salary:</strong> <?= htmlspecialchars($job['salary']) ?></p>
+            <p><strong>Salary:</strong> $<?= htmlspecialchars($job['salary']) ?>/year</p>
             <p class="description"><?= nl2br(htmlspecialchars($job['description'])) ?></p>
 
             <!-- Video Section (Static or Replace with Job-Specific Videos) -->

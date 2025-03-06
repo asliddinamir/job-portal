@@ -38,7 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
     $stmt->bind_param("ssssssi", $job_title, $company_name, $category, $location, $salary, $description, $job_id); // Bind the parameters
 
     if ($stmt->execute()) { // Execute the statement
-        $message = "✅ Job updated successfully!"; // Set success message if the update was successful
+        $message = "✅ Job updated successfully! Redirecting to login...";
+        header("refresh:1;url=manage-jobs.php"); // Set success message if the update was successful
     } else {
         $message = "❌ Failed to update job."; // Set error message if the update failed
     }
@@ -47,12 +48,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8"> <!-- Character encoding -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport settings for responsive design -->
     <title>Edit Job | Jobify</title> <!-- Page title -->
     <link rel="stylesheet" href="css/style.css"> <!-- Link to external CSS file -->
 </head>
+
 <body>
     <header>
         <div class="admin-logo">
@@ -79,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
             <div class="apply-group">
                 <input type="text" name="job_title" value="<?= htmlspecialchars($job['job_title']) ?>" required> <!-- Input for job title -->
             </div>
-            
+
             <label>Company Name:</label>
             <div class="apply-group">
                 <input type="text" name="company_name" value="<?= htmlspecialchars($job['company_name']) ?>" required> <!-- Input for company name -->
@@ -113,4 +116,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
         <p>&copy; 2025 Jobify. All Rights Reserved.</p> <!-- Footer content -->
     </footer>
 </body>
+
 </html>

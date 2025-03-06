@@ -1,16 +1,20 @@
 <?php
+// Start the session
 session_start();
+
+// Check if the user is not logged in or not an admin, redirect to login page
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit();
 }
 
+// Include the database configuration file
 include 'php/config.php';
 
-// Get application ID
+// Get the application ID from the URL, default to 0 if not set
 $application_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Fetch the cover letter
+// Prepare the SQL query to fetch the cover letter and job seeker name
 $query = "SELECT cover_letter, job_seeker_name FROM applications WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $application_id);
@@ -18,6 +22,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $application = $result->fetch_assoc();
 
+// If no application is found, display an error message and terminate the script
 if (!$application) {
     die("❌ Cover letter not found.");
 }
@@ -46,6 +51,7 @@ if (!$application) {
     </header>
 
     <main class="dashboard-container">
+        <!-- Display the job seeker's name and cover letter -->
         <h2>Cover Letter - <?= htmlspecialchars($application['job_seeker_name']) ?></h2>
         <p class="cover-letter-text"><?= nl2br(htmlspecialchars($application['cover_letter'])) ?></p>
         <br>

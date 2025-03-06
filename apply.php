@@ -1,5 +1,6 @@
 <?php
-session_start();
+session_start(); // Start the session to access session variables
+
 // Include database connection
 include 'php/config.php';
 

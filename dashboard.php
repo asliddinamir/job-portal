@@ -1,7 +1,7 @@
 <?php
-session_start();
+session_start(); // Start the session
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'job_seeker') {
-    header("Location: login.php");
+    header("Location: login.php"); // Redirect to login page if user is not logged in or not a job seeker
     exit();
 }
 
@@ -20,10 +20,10 @@ $query = "SELECT applications.*, jobs.job_title, jobs.company_name, jobs.locatio
           WHERE applications.email = ? 
           ORDER BY applications.applied_at DESC";
 
-$stmt = $conn->prepare($query);
-$stmt->bind_param("s", $user_email);
-$stmt->execute();
-$result = $stmt->get_result();
+$stmt = $conn->prepare($query); // Prepare the SQL statement
+$stmt->bind_param("s", $user_email); // Bind the user's email to the statement
+$stmt->execute(); // Execute the statement
+$result = $stmt->get_result(); // Get the result set
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ $result = $stmt->get_result();
 
         <h2>My Job Applications</h2>
 
-        <?php if ($result->num_rows > 0): ?>
+        <?php if ($result->num_rows > 0): // Check if there are any applications ?>
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -92,7 +92,7 @@ $result = $stmt->get_result();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = $result->fetch_assoc()): ?>
+                    <?php while ($row = $result->fetch_assoc()): // Fetch each application ?>
                         <tr>
                             <td><?= htmlspecialchars($row['job_title']) ?></td>
                             <td><?= htmlspecialchars($row['company_name']) ?></td>

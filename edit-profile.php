@@ -101,8 +101,10 @@ $user = $result->fetch_assoc(); // Fetch the user details as an associative arra
                 <ul class="sidebar-menu">
                     <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li> <!-- Link to user profile -->
                     <li><a href="edit-profile.php" class="active-sidebar"><i class="fas fa-user-gear"></i> Edit Profile</a></li> <!-- Link to edit profile -->
-                    <?php if ($user['role'] == 'job-seeker'): ?>
+                    <?php if ($user['role'] == 'job_seeker'): ?>
                     <li><a href="saved-jobs.php"><i class="fas fa-bookmark"></i> Saved Jobs</a></li> <!-- Link to saved jobs -->
+                    <?php else: ?>
+                    <!-- No additional menu items for other roles -->
                     <?php endif; ?>
                     <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li> <!-- Link to logout -->
                 </ul>

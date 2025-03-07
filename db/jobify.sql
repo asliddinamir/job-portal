@@ -150,7 +150,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`, `phone`, `reset_token`) VALUES
 (5, 'Azizjon Avazov', 'asli@gmail.com', '$2y$10$7KmuAIaNrNpyCLqS31RKQepZX.oB0tugDK7ZIUnVhMIkmndpJXGA6', 'job_seeker', '2025-03-05 10:04:56', '0181111111', NULL),
 (6, 'Asliddin', 'a@gmail.com', '$2y$10$9kj3l9dWn2nSTLMmuaS8B.7fka6VJ3.R4cyE3XKKpEGu3rPhsqdjW', 'job_seeker', '2025-03-05 10:27:34', '018909809', NULL),
-(7, 'Adminchik', 'admin@gmail.com', '$2y$10$TCNfydHgU/LSbti4wl0TCeEcmlG21AQHgiRzr8zmpeJMVeicWc4OO', 'admin', '2025-03-05 10:28:54', '1234565', NULL),
+(7, 'Admin', 'admin@gmail.com', '$2y$10$TCNfydHgU/LSbti4wl0TCeEcmlG21AQHgiRzr8zmpeJMVeicWc4OO', 'admin', '2025-03-05 10:28:54', '1234565', NULL),
 (8, 'Azam', 'akmal@gmail.com', '$2y$10$nWCtoPqqwoQjPuM9kodXX.ew3mwOBGbU/roqNzUeNjqrHOLdb.csq', 'job_seeker', '2025-03-05 19:24:29', '0189808402', NULL),
 (9, 'Admin2', 'admin2@gmail.com', '$2y$10$EIOnDnYKxHtxeo/dkvRgi.gbSBaqdkTIm3cNjUkvVaYf8k3tqU4Ty', 'admin', '2025-03-05 19:26:38', '123456', NULL),
 (10, 'Akramjon', 'akram@gmail.com', '$2y$10$7lYyWszhA.EOwdfsV6dpAu6Rxwq8BywFFDojRs5bjztt5mF.hVaAK', 'job_seeker', '2025-03-06 01:37:21', '12345678', NULL),

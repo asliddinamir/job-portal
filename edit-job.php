@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport settings for responsive design -->
     <title>Edit Job | Jobify</title> <!-- Page title -->
     <link rel="stylesheet" href="css/style.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- Link to Font Awesome CSS -->
 </head>
 
 <body>
@@ -65,12 +66,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
             <ul>
                 <li><a href="manage-jobs.php" class="active">Manage Jobs</a></li> <!-- Navigation link to manage jobs -->
                 <li><a href="manage-applications.php">Manage Applications</a></li> <!-- Navigation link to manage applications -->
-                <li><a href="logout.php">Logout</a></li> <!-- Navigation link to logout -->
+                <!-- Profile Icon -->
+                <div class="profile-icon" onclick="toggleSidebar()">
+                    <img src="assets/images/profile.png" alt="Profile">
+                </div>
             </ul>
         </nav>
     </header>
 
     <main class="apply-container">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <button class="close-btn" onclick="toggleSidebar()">×</button>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="user-info">
+                    <img src="assets/images/profile.png" alt="Profile">
+                    <p><strong><?= $_SESSION['name'] ?></strong></p>
+                    <p><?= $_SESSION['email'] ?></p>
+                </div>
+                <hr>
+                <ul class="sidebar-menu">
+                    <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="edit-profile.php"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
         <h2 style="text-align: center;">Edit Job</h2> <!-- Page heading -->
 
         <?php if ($message): ?> <!-- Check if there is a message to display -->
@@ -115,6 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p> <!-- Footer content -->
     </footer>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form is submitted
 }
 
 // Fetch user details
-$query = "SELECT name, phone FROM users WHERE id = ?"; // SQL query to fetch user details
+$query = "SELECT name, phone, role FROM users WHERE id = ?"; // SQL query to fetch user details
 $stmt = $conn->prepare($query); // Prepare the SQL statement
 $stmt->bind_param("i", $user_id); // Bind the user ID parameter
 $stmt->execute(); // Execute the statement
@@ -47,6 +47,23 @@ $user = $result->fetch_assoc(); // Fetch the user details as an associative arra
 </head>
 
 <body>
+    <?php if ($user['role'] == 'admin'): ?>
+    <header>
+        <div class="admin-logo">
+            <h1>Jobify Admin Panel</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="manage-jobs.php" class="active">Manage Jobs</a></li>
+                <li><a href="manage-applications.php">Manage Applications</a></li>
+                <!-- Profile Icon -->
+                <div class="profile-icon" onclick="toggleSidebar()">
+                    <img src="assets/images/profile.png" alt="Profile">
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <?php else: ?>
     <header>
         <div class="logo">
             <h1>Jobify</h1> <!-- Logo -->
@@ -63,6 +80,7 @@ $user = $result->fetch_assoc(); // Fetch the user details as an associative arra
             </ul>
         </nav>
     </header>
+    <?php endif; ?>
 
     <main class="apply-container">
         <!-- Sidebar -->
@@ -83,7 +101,9 @@ $user = $result->fetch_assoc(); // Fetch the user details as an associative arra
                 <ul class="sidebar-menu">
                     <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li> <!-- Link to user profile -->
                     <li><a href="edit-profile.php" class="active-sidebar"><i class="fas fa-user-gear"></i> Edit Profile</a></li> <!-- Link to edit profile -->
+                    <?php if ($user['role'] == 'job-seeker'): ?>
                     <li><a href="saved-jobs.php"><i class="fas fa-bookmark"></i> Saved Jobs</a></li> <!-- Link to saved jobs -->
+                    <?php endif; ?>
                     <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li> <!-- Link to logout -->
                 </ul>
             </div>

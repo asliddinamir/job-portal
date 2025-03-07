@@ -28,6 +28,7 @@ if (!$job) { // Check if the job details were not found
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Set the viewport for responsive design -->
     <title>Job Description | <?= htmlspecialchars($job['job_title']) ?></title> <!-- Set the page title dynamically based on the job title -->
     <link rel="stylesheet" href="css/style.css"> <!-- Link to the external CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- Link to Font Awesome CSS -->
 </head>
 
 <body>
@@ -39,12 +40,35 @@ if (!$job) { // Check if the job details were not found
             <ul>
                 <li><a href="manage-jobs.php" class="active">Manage Jobs</a></li> <!-- Navigation link to manage jobs -->
                 <li><a href="manage-applications.php">Manage Applications</a></li> <!-- Navigation link to manage applications -->
-                <li><a href="logout.php">Logout</a></li> <!-- Navigation link to logout -->
+                <!-- Profile Icon -->
+                <div class="profile-icon" onclick="toggleSidebar()">
+                    <img src="assets/images/profile.png" alt="Profile">
+                </div>
             </ul>
         </nav>
     </header>
 
     <main class="dashboard-container" id="job-description">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <button class="close-btn" onclick="toggleSidebar()">×</button>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="user-info">
+                    <img src="assets/images/profile.png" alt="Profile">
+                    <p><strong><?= $_SESSION['name'] ?></strong></p>
+                    <p><?= $_SESSION['email'] ?></p>
+                </div>
+                <hr>
+                <ul class="sidebar-menu">
+                    <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="edit-profile.php"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
         <h2>Job Description</h2> <!-- Section heading for job description -->
         <h3><?= htmlspecialchars($job['job_title']) ?></h3> <!-- Display the job title -->
         <p><strong>Company:</strong> <?= htmlspecialchars($job['company_name']) ?></p> <!-- Display the company name -->
@@ -59,6 +83,7 @@ if (!$job) { // Check if the job details were not found
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p> <!-- Footer content -->
     </footer>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

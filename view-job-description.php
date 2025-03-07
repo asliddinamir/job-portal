@@ -34,7 +34,7 @@ if (!$job) { // Check if the job details were not found
 <body>
     <header>
         <div class="admin-logo">
-            <h1>Jobify Admin Panel</h1> <!-- Display the admin panel logo -->
+            <h1 style="font-size: 26px;">Jobify Admin Panel</h1> <!-- Display the admin panel logo -->
         </div>
         <nav>
             <ul>

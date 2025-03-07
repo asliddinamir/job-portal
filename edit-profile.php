@@ -50,7 +50,7 @@ $user = $result->fetch_assoc(); // Fetch the user details as an associative arra
     <?php if ($user['role'] == 'admin'): ?>
     <header>
         <div class="admin-logo">
-            <h1>Jobify Admin Panel</h1>
+            <h1 style="font-size: 26px;">Jobify Admin Panel</h1>
         </div>
         <nav>
             <ul>

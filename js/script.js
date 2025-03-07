@@ -84,29 +84,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     const form = document.querySelector(".reset-form");
-//     // const errorMessage = document.querySelector(".error-message");
+// Logout Modal Page Script
 
-//     form.addEventListener("submit", function (event) {
-//         let valid = true;
+document.addEventListener("DOMContentLoaded", function () {
+    const logoutBtn = document.getElementById("logoutBtn");
+    const logoutModal = document.getElementById("logoutModal");
+    const cancelLogout = document.getElementById("cancelLogout");
 
-//         // Validate Password Length (Min 5 characters)
-//         const passwordInput = form.querySelector('input[name="password"]');
-//         if (passwordInput.value.length < 5) {
-//             alert("❌ Password must be at least 5 characters long.");
-//             valid = false;
-//         }
+    if (logoutBtn && logoutModal && cancelLogout) {
+        // Show modal when logout button is clicked
+        logoutBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            logoutModal.style.display = "flex";
+        });
 
-//         // Validate Password Match
-//         const confirmPasswordInput = form.querySelector('input[name="confirm_password"]');
-//         if (passwordInput.value !== confirmPasswordInput.value) {
-//             alert("❌ Passwords do not match.");
-//             valid = false;
-//         }
+        // Hide modal when cancel is clicked
+        cancelLogout.addEventListener("click", function () {
+            logoutModal.style.display = "none";
+        });
 
-//         if (!valid) event.preventDefault(); // Stop form submission if validation fails
-//     });
-// });
+        // Close modal when clicking outside of it
+        window.addEventListener("click", function (event) {
+            if (event.target === logoutModal) {
+                logoutModal.style.display = "none";
+            }
+        });
+    }
+});
+
 
 

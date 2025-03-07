@@ -55,7 +55,7 @@ $result = $conn->query($query); // Execute query
 <body>
     <header>
         <div class="admin-logo">
-            <h1>Jobify Admin Panel</h1>
+            <h1 style="font-size: 26px;">Jobify Admin Panel</h1>
         </div>
         <nav>
             <ul>

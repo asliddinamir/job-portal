@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Check if the form was submitted
 <body>
     <header>
         <div class="admin-logo">
-            <h1>Jobify Admin Panel</h1> <!-- Admin panel header -->
+            <h1 style="font-size: 26px;">Jobify Admin Panel</h1> <!-- Admin panel header -->
         </div>
         <nav>
             <ul>

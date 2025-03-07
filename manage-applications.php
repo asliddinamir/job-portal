@@ -43,12 +43,15 @@ $result = $conn->query($query); // Execute query
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Jobify</title>
     <link rel="stylesheet" href="css/style.css"> <!-- Link to CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="admin-logo">
@@ -58,12 +61,35 @@ $result = $conn->query($query); // Execute query
             <ul>
                 <li><a href="manage-jobs.php">Manage Jobs</a></li>
                 <li><a href="manage-applications.php" class="active">Manage Applications</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <!-- Profile Icon -->
+                <div class="profile-icon" onclick="toggleSidebar()">
+                    <img src="assets/images/profile.png" alt="Profile">
+                </div>
             </ul>
         </nav>
     </header>
 
     <main class="admin-container">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <button class="close-btn" onclick="toggleSidebar()">×</button>
+            </div>
+
+            <div class="sidebar-content">
+                <div class="user-info">
+                    <img src="assets/images/profile.png" alt="Profile">
+                    <p><strong><?= $_SESSION['name'] ?></strong></p>
+                    <p><?= $_SESSION['email'] ?></p>
+                </div>
+                <hr>
+                <ul class="sidebar-menu">
+                    <li><a href="profile.php"><i class="fas fa-user"></i> Your Profile</a></li>
+                    <li><a href="edit-profile.php"><i class="fas fa-user-gear"></i> Edit Profile</a></li>
+                    <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
         <h2>Manage Job Applications</h2>
 
         <?php if ($message): ?>
@@ -145,7 +171,7 @@ $result = $conn->query($query); // Execute query
     <footer>
         <p>&copy; 2025 Jobify. All Rights Reserved.</p> <!-- Footer -->
     </footer>
-    
+    <script src="js/script.js"></script>
     <script>
         document.getElementById("select-all").addEventListener("click", function() {
             var checkboxes = document.querySelectorAll('input[name="selected_applications[]"]');
@@ -153,4 +179,5 @@ $result = $conn->query($query); // Execute query
         });
     </script>
 </body>
+
 </html>

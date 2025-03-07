@@ -1,5 +1,9 @@
 <?php
 session_start(); // Start the session
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'job_seeker') {
+    header("Location: login.php"); // Redirect to login page if user is not logged in or not a job seeker
+    exit();
+}
 include 'php/config.php'; // Include the database configuration file
 
 // Get search, category, and location from GET parameters if they exist

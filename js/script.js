@@ -83,34 +83,3 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!valid) event.preventDefault(); // Stop form submission if validation fails
     });
 });
-
-// Logout Modal Page Script
-
-document.addEventListener("DOMContentLoaded", function () {
-    const logoutBtn = document.getElementById("logoutBtn");
-    const logoutModal = document.getElementById("logoutModal");
-    const cancelLogout = document.getElementById("cancelLogout");
-
-    if (logoutBtn && logoutModal && cancelLogout) {
-        // Show modal when logout button is clicked
-        logoutBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            logoutModal.style.display = "flex";
-        });
-
-        // Hide modal when cancel is clicked
-        cancelLogout.addEventListener("click", function () {
-            logoutModal.style.display = "none";
-        });
-
-        // Close modal when clicking outside of it
-        window.addEventListener("click", function (event) {
-            if (event.target === logoutModal) {
-                logoutModal.style.display = "none";
-            }
-        });
-    }
-});
-
-
-

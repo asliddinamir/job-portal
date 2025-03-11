@@ -120,7 +120,7 @@ $result = $conn->query($query);
                             </td>
                             <td class="action-btns">
                                 <a href="edit-job.php?id=<?= $row['id'] ?>" class="btn2 btn-edit">✏️ Edit</a>
-                                <a href="employer-dashboard.php?delete_id=<?= $row['id'] ?>" class="btn2 btn-delete" onclick="return confirm('Are you sure you want to delete this job?')">🗑️ Delete</a>
+                                <a href="manage-jobs.php?delete_id=<?= $row['id'] ?>" class="btn2 btn-delete" onclick="return confirm('Are you sure you want to delete this job?')">🗑️ Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
